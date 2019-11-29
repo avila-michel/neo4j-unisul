@@ -1,16 +1,16 @@
-//[1] Quantos nós tem o grafo?
+//[1] Quantos nÃ³s tem o grafo?
 MATCH (n) RETURN COUNT(n);
 
-//[2] Mostrar os 10 primeiros nós
+//[2] Mostrar os 10 primeiros nÃ³s
 MATCH (n) RETURN n LIMIT 10;
 
-//[3] Quais são os labels disponíveis?
+//[3] Quais sÃ£o os labels disponÃ­veis?
 MATCH (n) RETURN LABELS(n), COUNT(n);
 
-//[4] Quais são os relacionamentos disponíveis?
+//[4] Quais sÃ£o os relacionamentos disponÃ­veis?
 MATCH (n)-[r]-(m) RETURN TYPE(r), COUNT(r);
 
-//[5] Como tudo está relacionado (esquema)?
+//[5] Como tudo estÃ¡ relacionado (esquema)?
 MATCH (n)-[r]-(m)
 RETURN LABELS(n),TYPE(r),LABELS(m),COUNT(*);
 
@@ -18,12 +18,12 @@ RETURN LABELS(n),TYPE(r),LABELS(m),COUNT(*);
 MATCH (n)-[r]->(m)
 RETURN LABELS(n),TYPE(r),LABELS(m),COUNT(*);
 
-//[7] Quais comportamentos Susan está buscando?
+//[7] Quais comportamentos Susan estÃ¡ buscando?
 MATCH (target:Person {name:"Susan"})
      ,(target)-[:wants]->(behavior)
 RETURN behavior.name;
 
-//[8] Quem tem o que Susan está buscando?
+//[8] Quem tem o que Susan estÃ¡ buscando?
 MATCH
   (target:Person {name:"Susan"})
  ,(target)-[:wants]->(behavior)
@@ -34,7 +34,7 @@ RETURN
 ORDER BY proposed
 LIMIT 50;
 
-//[9] Dá pra melhorar o resultado?
+//[9] DÃ¡ pra melhorar o resultado?
 MATCH
   (target:Person {name:"Susan"})
  ,(target)-[:wants]->(behavior)
