@@ -34,6 +34,9 @@ CREATE CONSTRAINT ON (p:Person)   ASSERT p.name IS UNIQUE;
 CREATE CONSTRAINT ON (p:Place)    ASSERT p.name IS UNIQUE;
 CREATE CONSTRAINT ON (b:Behavior) ASSERT b.name IS UNIQUE;
 
+//verify results
+match (n)-[r]->(m) return labels(n), type(r), labels(m), count(*);
+
 /*
 expected output:
 +----------------------------------------------+
@@ -47,5 +50,8 @@ expected output:
 +----------------------------------------------+
 */
 
-//verify results
-match (n)-[r]->(m) return labels(n), type(r), labels(m), count(*);
+// check schema
+call db.schema.visualization;
+
+// check indexes
+call db.indexes;
